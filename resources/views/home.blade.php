@@ -1,17 +1,21 @@
 <!-- resources/views/home.blade.php -->
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Comics</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Benvenuto in Home')
+
+@section('content')
     <h1>Benvenuto nel Laravel Comics</h1>
-    <ul>
-        @foreach($data as $item)
-            <li>{{ $item }}</li>
+    <div class="comics">
+        @foreach($data as $comic)
+            <div class="comic">
+                <h2>{{ $comic['title'] }}</h2>
+                <img src="{{ $comic['thumb'] }}" alt="{{ $comic['title'] }}">
+                <p>{{ $comic['description'] }}</p>
+                <p><strong>Price:</strong> {{ $comic['price'] }}</p>
+                <p><strong>Series:</strong> {{ $comic['series'] }}</p>
+                <p><strong>Sale Date:</strong> {{ $comic['sale_date'] }}</p>
+                <p><strong>Type:</strong> {{ $comic['type'] }}</p>
+            </div>
         @endforeach
-    </ul>
-</body>
-</html>
+    </div>
+@endsection
